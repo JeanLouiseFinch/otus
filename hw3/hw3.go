@@ -6,13 +6,13 @@ import (
 )
 
 type wordCount struct{
-	word string
-	count int
+	Word string
+	Count int
 }
 
 func isExist(sl []wordCount, word string) bool {
 	for i := range sl {
-		if sl[i].word == word {
+		if sl[i].Word == word {
 			return true
 		}
 	}
@@ -29,11 +29,11 @@ func Top10(source string) ([]wordCount) {
 	for _,val := range str {
 		if !isExist(result,val) {
 			result = append(result,wordCount{
-				count: strings.Count(source,val),
-				word:val,
+				Count: strings.Count(source,val),
+				Word:val,
 			})
 		}
 	}
-	sort.Slice(result, func(i, j int) bool { return result[i].count > result[j].count })
+	sort.Slice(result, func(i, j int) bool { return result[i].Count > result[j].Count })
 	return result[:10]
 }
